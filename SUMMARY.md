@@ -1,5 +1,6 @@
 # Summary
 
+* [Introduction](introduction.md)
 * [Install and Setup](README.md)
 * [Data Types](chapter1.md)
 * [Commands](commands.md)
