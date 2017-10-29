@@ -1,7 +1,7 @@
 # Summary
 
-* [Introduction](introduction.md)
-* [Install and Setup](README.md)
+* [Introduction](README.md)
+* [Installation and Setup](introduction.md)
 * [Data Types](chapter1.md)
 * [Commands](commands.md)
 * [Events](events.md)
