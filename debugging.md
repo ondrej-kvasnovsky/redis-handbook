@@ -136,10 +136,12 @@ dbsize
 
 ### Find slow commands
 
-We can find commands that are slow. The [slowlog](https://redis.io/commands/slowlog) is aggregated in memory and then returned to client. 
+We can find commands that are slow. The [slowlog](https://redis.io/commands/slowlog) is aggregated in memory and then returned to client.
+
+The most exciting number is `3) (integer) 29747`, which says number milliseconds the command took to execute. `1)` is ID and `2)` is timestamp.
 
 ```
-proxy-server.redis.test.wiser.com:6379> slowlog get 10
+myservice.redis.mycompany.com:6379> slowlog get 10
  1) 1) (integer) 3143410
     2) (integer) 1515186728
     3) (integer) 29747
@@ -164,5 +166,5 @@ proxy-server.redis.test.wiser.com:6379> slowlog get 10
 (20.18s)
 ```
 
-We can see that we got problem with using [keys](https://redis.io/commands/keys) command too much. There is a warning that `keys` command shouldn't be used with care in production. 
+We can see that we got problem with using [keys](https://redis.io/commands/keys) command too much. There is a warning that `keys` command shouldn't be used with care in production.
 

@@ -17,7 +17,7 @@ RENAME key newkey
 RENAMENX key newkey
 ```
 
-Print all keys for given pattern.
+Print all keys for given pattern. Don't use KEYS too much in production, it can slow down Redis a lot.
 
 ```
 KEYS pattern
