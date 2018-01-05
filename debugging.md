@@ -125,7 +125,7 @@ db0:keys=251842,expires=251828,avg_ttl=42457658
 
 ### How many keys is there
 
-[dbsize](https://redis.io/commands/dbsize) is used to get how many keys our Redis has. 
+[dbsize](https://redis.io/commands/dbsize) is used to get how many keys our Redis has.
 
 ```
 $ redis-cli -h myservice.redis.mycompany.com
@@ -134,5 +134,35 @@ dbsize
 (5.03s)
 ```
 
+### Find slow commands
 
+We can find commands that are slow. The [slowlog](https://redis.io/commands/slowlog) is aggregated in memory and then returned to client. 
+
+```
+proxy-server.redis.test.wiser.com:6379> slowlog get 10
+ 1) 1) (integer) 3143410
+    2) (integer) 1515186728
+    3) (integer) 29747
+    4) 1) "keys"
+       2) "somekey1"
+ 2) 1) (integer) 3143409
+    2) (integer) 1515186728
+    3) (integer) 29808
+    4) 1) "keys"
+       2) "somekey2"
+ 3) 1) (integer) 3143408
+    2) (integer) 1515186728
+    3) (integer) 30949
+    4) 1) "keys"
+       2) "somekey3"
+ 4) 1) (integer) 3143407
+    2) (integer) 1515186728
+    3) (integer) 30072
+    4) 1) "keys"
+       2) "somekey4"
+ ...
+(20.18s)
+```
+
+We can see that we got problem with using [keys](https://redis.io/commands/keys) command too much. There is a warning that `keys` command shouldn't be used with care in production. 
 
