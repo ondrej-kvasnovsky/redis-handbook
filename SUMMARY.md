@@ -7,4 +7,5 @@
 * [Events](events.md)
 * [Designing Database](designing-database.md)
 * [Lua Scripts](lua-scripts.md)
+* [Debugging](debugging.md)
 
