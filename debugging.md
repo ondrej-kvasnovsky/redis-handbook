@@ -14,13 +14,13 @@ $ redis-cli -h myservice.redis.mycompany.com monitor
 
 Then we receive all the commands and we can figure out what is wrong.
 
-Then we can dump the redis logs into a file and do a little analyzes. 
+Then we can dump the redis logs into a file and do a little analyzes.
 
 ```
 $ redis-cli -h myservice.redis.mycompany.com monitor > redis-logs.txt
 ```
 
-Lets create very simple and stupid script that will give us an idea what is happening in redis. Like how many commands were executed. 
+Lets create very simple and stupid script that will give us an idea what is happening in redis. Like how many commands were executed.
 
 ```
 import java.text.DateFormat
@@ -84,7 +84,7 @@ println 'To: ' + df.parse(lastLine).toInstant()
 println 'Aggregated: ' + aggregator
 ```
 
-When we run the script we find that there are too many keys command calls, that can be causing performance issues. 
+When we run the script we find that there are too many keys command calls, that can be causing performance issues.
 
 ```
 Starting...
@@ -330,4 +330,15 @@ myservice.redis.mycompany.com:6379> slowlog get 10
 ```
 
 We can see that we got problem with using [keys](https://redis.io/commands/keys) command too much. There is a warning that `keys` command shouldn't be used with care in production.
+
+### Latency
+
+We can measure latency of a Redis instance. 
+
+```
+➜ redis-cli --latency -h myservice.redis.mycompany.com
+min: 25, max: 41, avg: 26.45 (352 samples)
+```
+
+
 
